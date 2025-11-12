@@ -1,0 +1,793 @@
+/*===============================================
+  1. ARRUMANDO O BÁSICO (Reset e Fontes)
+===============================================*/
+
+/* Isso faz a rolagem ser suave quando clica num link */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Configuração geral do site */
+body {
+    font-family: 'Inter', sans-serif;
+    /* Fonte legal que peguei do Google Fonts */
+    background-color: #F3F7FD;
+    color: #2C4A7A;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    /* Tirar todas as margens padrão */
+    padding: 0;
+    /* Tirar todos os paddings padrão */
+    line-height: 1.6;
+}
+
+/* Uma "caixa" que limita a largura do conteúdo no PC */
+.container {
+    max-width: 1280px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 24px;
+    padding-right: 24px;
+}
+
+/* Estilos base de texto */
+h1,
+h2,
+h3 {
+    font-family: 'Merriweather', serif;
+    font-weight: 700;
+    color: #2C4A7A;
+    line-height: 1.2;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h2 {
+    font-size: 2.5rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    color: rgba(44, 74, 122, 0.8);
+    margin-top: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+a {
+    color: #EAAF3A;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #2C4A7A;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+section h2 {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+section .subtitulo {
+    text-align: center;
+    font-size: 1.125rem;
+    max-width: 48rem;
+    margin: 0 auto 4rem auto;
+}
+
+/*===============================================
+  2. COMPONENTES REUTILIZÁVEIS
+===============================================*/
+
+.botao-acao {
+    display: inline-block;
+    background-color: #FBCB61;
+    color: #2C4A7A;
+    font-family: 'Inter', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 14px 28px;
+    border-radius: 8px;
+    text-align: center;
+    text-decoration: none;
+    box-shadow: 0 4px 14px rgba(251, 203, 97, 0.4);
+    transition: all 0.3s ease;
+}
+
+.botao-acao:hover {
+    background-color: #EAAF3A;
+    color: #2C4A7A;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(251, 203, 97, 0.5);
+}
+
+.pulso {
+    animation: pulso 2s infinite;
+}
+
+@keyframes pulso {
+    0% {
+        transform: scale(1);
+    }
+
+    50% {
+        transform: scale(1.03);
+    }
+
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+/*===============================================
+  3. CABEÇALHO E NAVEGAÇÃO
+===============================================*/
+header {
+    position: sticky;
+    top: 0;
+    z-index: 50;
+    width: 100%;
+    background-color: rgba(243, 247, 253, 0.8);
+    backdrop-filter: blur(10px);
+    border-bottom: 1px solid #DCEAFB;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 20px 24px;
+}
+
+/* Estilo para o link do logotipo */
+nav .logo-link {
+    /* Não precisa de estilo de texto porque agora é uma imagem */
+    display: flex;
+    /* Para centralizar a imagem se precisar */
+    align-items: center;
+}
+
+/* Estilo para a imagem do logotipo */
+nav .logo-img {
+    max-height: 60px;
+    /* Altura máxima da sua imagem de logo */
+    width: auto;
+    /* Mantém a proporção */
+    transition: opacity 0.3s ease;
+    /* Efeito suave ao passar o mouse */
+}
+
+nav .logo-img:hover {
+    opacity: 0.8;
+    /* Escurece um pouco ao passar o mouse */
+}
+
+nav .menu-desk {
+    display: none;
+    align-items: center;
+}
+
+nav .menu-desk a {
+    font-size: 0.875rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    color: #2C4A7A;
+    margin-left: 32px;
+}
+
+nav .menu-desk a:hover {
+    color: #FBCB61;
+}
+
+nav .menu-btn {
+    display: block;
+}
+
+nav .menu-btn button {
+    background: none;
+    border: none;
+    color: #2C4A7A;
+    cursor: pointer;
+    font-size: 28px;
+    line-height: 1;
+    padding: 0;
+}
+
+/* Media Query: Desktop (md:) */
+@media (min-width: 768px) {
+    nav .menu-desk {
+        display: flex;
+    }
+
+    nav .menu-btn {
+        display: none;
+    }
+}
+
+
+/*===============================================
+  4. SEÇÃO HERO (#home)
+===============================================*/
+#home {
+    position: relative;
+    width: 100%;
+    max-width: 1280px;
+    margin: 0 auto;
+    overflow: hidden;
+    min-height: 95vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#home .hero-grid {
+    display: grid;
+}
+
+#home .hero-txt {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px 64px;
+    z-index: 10;
+}
+
+#home .hero-txt h1 {
+    font-size: 4.5rem;
+    font-weight: 900;
+    line-height: 1.1;
+}
+
+#home .hero-txt p {
+    font-size: 1.125rem;
+    max-width: 42rem;
+    margin-top: 24px;
+}
+
+#home .hero-txt .botao-acao {
+    margin-top: 40px;
+    align-self: flex-start;
+}
+
+#home .hero-img-box {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    opacity: 0.2;
+}
+
+#home .hero-clip {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, #F3F7FD 0%, transparent 50%);
+}
+
+#home .hero-img {
+    width: 100%;
+    height: 100%;
+    /* NOVA IMAGEM HERO */
+    background-image: url('https://media.istockphoto.com/id/2019979263/pt/foto/legal-rights-concept-statue-of-lady-justice-holding-scales-of-justice.jpg?s=612x612&w=0&k=20&c=kPphRiibXTGkCg_QcCdF8CobJ-Cf0XvfUJjjf1pejzw=');
+    background-size: cover;
+    background-position: center;
+}
+
+#home .slogan {
+    position: relative;
+    z-index: 10;
+    margin-top: -64px;
+    text-align: center;
+    padding-left: 16px;
+    padding-right: 16px;
+}
+
+#home .slogan h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+    background-color: rgba(243, 247, 253, 0.8);
+    backdrop-filter: blur(4px);
+    display: inline-block;
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
+}
+
+/* Media Query: Desktop (md:) */
+@media (min-width: 768px) {
+    #home .hero-grid {
+        /* Antes era "1fr 1.5fr". 
+      Agora, a 1ª coluna (texto) tem 1.5 parte
+      e a 2ª (imagem) tem 1 parte.
+      (Basicamente 60% para o texto e 40% para a imagem)
+    */
+        grid-template-columns: 1.5fr 1fr;
+        /* <-- MUDANÇA AQUI */
+    }
+
+    #home .hero-img-box {
+        position: relative;
+        opacity: 1;
+        background: none;
+        /* A linha "width: 65%;" foi removida daqui */
+    }
+
+    #home .hero-txt {
+        padding-right: 24px;
+    }
+}
+
+
+/*===============================================
+  5. SEÇÃO ÁREAS (#areas)
+===============================================*/
+#areas {
+    padding-top: 96px;
+    padding-bottom: 96px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.card-grid {
+    display: grid;
+    gap: 32px;
+}
+
+.card {
+    background-color: #F3F7FD;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(220, 234, 251, 0.3);
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px rgba(44, 74, 122, 0.1);
+}
+
+.card-ico {
+    font-size: 48px;
+    margin-bottom: 16px;
+}
+
+.card h3 {
+    margin-bottom: 12px;
+}
+
+.card p {
+    font-size: 0.875rem;
+}
+
+/* Media Query: Desktop (md: e lg:) */
+@media (min-width: 768px) {
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/*===============================================
+  6. SEÇÃO SOBRE (#sobre) - (MODIFICADA)
+===============================================*/
+#sobre {
+    padding-top: 96px;
+    padding-bottom: 96px;
+}
+
+#sobre .container {
+    max-width: 1024px;
+}
+
+.sobre-grid {
+    display: grid;
+    gap: 64px;
+    align-items: center;
+}
+
+/* ESTILOS ANTIGOS (REMOVIDOS):
+.sobre-img {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+.sobre-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+} 
+*/
+
+/* NOVOS ESTILOS PARA OS CARTÕES */
+.sobre-card {
+    background-color: #F3F7FD;
+    padding: 0;
+    /* Remove padding para a imagem preencher */
+    border-radius: 8px;
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(220, 234, 251, 0.3);
+    text-align: center;
+    transition: all 0.3s ease;
+    overflow: hidden;
+    /* Importante para a imagem */
+}
+
+.sobre-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 25px rgba(44, 74, 122, 0.1);
+}
+
+.sobre-card img {
+    width: 100%;
+    height: 300px;
+    /* Altura fixa para os cards */
+    object-fit: cover;
+}
+
+.sobre-card p {
+    padding: 24px;
+    font-weight: 500;
+    color: #2C4A7A;
+    margin: 0;
+}
+
+
+/* Media Query: Desktop (md:) */
+@media (min-width: 768px) {
+    .sobre-grid {
+        /* Antes era "1fr 1fr"
+      Agora é "1.5fr 1fr 1fr" (Texto | Card 1 | Card 2)
+    */
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 32px;
+        /* Reduzindo o gap para caber melhor */
+    }
+}
+
+
+/*===============================================
+  7. SEÇÃO PROCESSO (#processo)
+===============================================*/
+#processo {
+    padding-top: 96px;
+    padding-bottom: 96px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+#processo .container {
+    max-width: 1024px;
+}
+
+.etapa-grid {
+    display: grid;
+    gap: 48px;
+    position: relative;
+}
+
+.etapa {
+    text-align: center;
+    position: relative;
+    padding: 0 16px;
+}
+
+.etapa-ico {
+    width: 80px;
+    height: 80px;
+    background-color: #FBCB61;
+    color: #2C4A7A;
+    border-radius: 50%;
+    margin: 0 auto;
+    box-shadow: 0 5px 15px rgba(251, 203, 97, 0.4);
+
+    font-size: 40px;
+    text-align: center;
+    line-height: 80px;
+}
+
+.etapa h3 {
+    margin-top: 16px;
+    margin-bottom: 16px;
+}
+
+/* Linhas de conexão */
+@media (min-width: 768px) {
+    .etapa-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+
+    .etapa:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 40px;
+        right: -25%;
+        width: 50%;
+        border-bottom: 2px dashed #FBCB61;
+        z-index: -1;
+    }
+}
+
+
+/*===============================================
+  8. SEÇÃO RECOMENDAÇÕES (#recomendacoes)
+===============================================*/
+#recomendacoes {
+    padding-top: 96px;
+    padding-bottom: 96px;
+}
+
+.depo-box {
+    max-width: 800px;
+}
+
+.depo-list {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+}
+
+.depo {
+    background-color: rgba(220, 234, 251, 0.6);
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+.depo p {
+    font-style: italic;
+    font-size: 1.125rem;
+    color: rgba(44, 74, 122, 0.9);
+    margin: 0;
+}
+
+.depo span {
+    font-weight: 700;
+    display: block;
+    margin-top: 16px;
+}
+
+/*===============================================
+  9. SEÇÃO CONTATO (#contato)
+===============================================*/
+#contato {
+    padding-top: 96px;
+    padding-bottom: 96px;
+    background-color: rgba(255, 255, 255, 0.5);
+}
+
+.form-box {
+    max-width: 800px;
+    text-align: center;
+}
+
+form {
+    background-color: #ffffff;
+    padding: 32px;
+    border-radius: 8px;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+form label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    margin-bottom: 4px;
+}
+
+form input[type="text"],
+form input[type="email"],
+form textarea {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid #DCEAFB;
+    box-sizing: border-box;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+form input[type="text"]:focus,
+form input[type="email"]:focus,
+form textarea:focus {
+    border-color: #FBCB61;
+    box-shadow: 0 0 0 1px #FBCB61;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+form .form-check {
+    display: flex;
+    align-items: flex-start;
+}
+
+form .form-check input {
+    height: 16px;
+    width: 16px;
+    margin-top: 4px;
+    accent-color: #FBCB61;
+}
+
+form .form-check label {
+    margin-left: 12px;
+    font-size: 0.875rem;
+    color: #2C4A7A;
+}
+
+form .form-check a {
+    text-decoration: underline;
+}
+
+form button {
+    width: 100%;
+}
+
+/*===============================================
+  10. RODAPÉ (footer)
+===============================================*/
+footer {
+    background-color: #2C4A7A;
+    color: rgba(243, 247, 253, 0.8);
+    padding: 80px 24px 40px 24px;
+}
+
+.rodape-grid {
+    display: grid;
+    gap: 40px;
+}
+
+footer h3 {
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #ffffff;
+    margin-bottom: 16px;
+}
+
+footer p {
+    font-size: 0.875rem;
+    color: inherit;
+}
+
+footer ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+footer .link-rodape {
+    font-size: 0.875rem;
+    color: inherit;
+    display: inline-block;
+}
+
+footer .link-rodape:hover {
+    color: #FBCB61;
+    text-decoration: underline;
+}
+
+.social {
+    display: flex;
+    gap: 16px;
+    margin-top: 16px;
+}
+
+.base {
+    text-align: center;
+    font-size: 0.875rem;
+    color: rgba(243, 247, 253, 0.6);
+    margin-top: 64px;
+    border-top: 1px solid rgba(243, 247, 253, 0.2);
+    padding-top: 32px;
+}
+
+.base a {
+    text-decoration: underline;
+    color: inherit;
+    margin-left: 16px;
+}
+
+.base a:hover {
+    color: #ffffff;
+}
+
+/* Media Query: Desktop (md:) */
+@media (min-width: 768px) {
+    .rodape-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+
+/*===============================================
+  11. ANIMAÇÕES DE SCROLL (Do seu JS)
+===============================================*/
+
+.animar-scroll {
+    opacity: 0;
+    /* Mantenho a opacidade 0 para a animação funcionar com o JS */
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.animar-scroll.subir {
+    transform: translateY(50px);
+}
+
+.animar-scroll.deslizar-esquerda {
+    transform: translateX(-50px);
+}
+
+.animar-scroll.deslizar-direita {
+    transform: translateX(50px);
+}
+
+.animar-scroll.visivel {
+    opacity: 1;
+    transform: translateY(0) translateX(0);
+}
+
+/* Atrasos (delay) */
+.atraso-150 {
+    transition-delay: 150ms;
+}
+
+.atraso-200 {
+    transition-delay: 200ms;
+}
+
+.atraso-300 {
+    transition-delay: 300ms;
+}
+
+.atraso-350 {
+    transition-delay: 350ms;
+}
+
+.atraso-450 {
+    transition-delay: 450ms;
+}
+
+.atraso-500 {
+    transition-delay: 500ms;
+}
+
+.atraso-550 {
+    transition-delay: 550ms;
+}
+
+.atraso-600 {
+    transition-delay: 600ms;
+}
+
+.atraso-700 {
+    transition-delay: 700ms;
+}
