@@ -178,7 +178,7 @@ nav .logo-img:hover {
 }
 
 nav .menu-desk {
-    display: none;
+    display: none; /* Escondido no mobile (padrão) */
     align-items: center;
 }
 
@@ -196,7 +196,7 @@ nav .menu-desk a:hover {
 }
 
 nav .menu-btn {
-    display: block;
+    display: block; /* Visível no mobile (padrão) */
 }
 
 nav .menu-btn button {
@@ -207,17 +207,6 @@ nav .menu-btn button {
     font-size: 28px;
     line-height: 1;
     padding: 0;
-}
-
-/* Media Query: Desktop (md:) */
-@media (min-width: 768px) {
-    nav .menu-desk {
-        display: flex;
-    }
-
-    nav .menu-btn {
-        display: none;
-    }
 }
 
 
@@ -237,7 +226,7 @@ nav .menu-btn button {
 }
 
 #home .hero-grid {
-    display: grid;
+    display: grid; /* Layout em grid (1 coluna por padrão) */
 }
 
 #home .hero-txt {
@@ -266,12 +255,12 @@ nav .menu-btn button {
 }
 
 #home .hero-img-box {
-    position: absolute;
+    position: absolute; /* Imagem fica "atrás" no mobile */
     top: 0;
     right: 0;
     width: 100%;
     height: 100%;
-    opacity: 0.2;
+    opacity: 0.2; /* Opacidade no mobile */
 }
 
 #home .hero-clip {
@@ -309,30 +298,6 @@ nav .menu-btn button {
     box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
 }
 
-/* Media Query: Desktop (md:) */
-@media (min-width: 768px) {
-    #home .hero-grid {
-        /* Antes era "1fr 1.5fr". 
-      Agora, a 1ª coluna (texto) tem 1.5 parte
-      e a 2ª (imagem) tem 1 parte.
-      (Basicamente 60% para o texto e 40% para a imagem)
-    */
-        grid-template-columns: 1.5fr 1fr;
-        /* <-- MUDANÇA AQUI */
-    }
-
-    #home .hero-img-box {
-        position: relative;
-        opacity: 1;
-        background: none;
-        /* A linha "width: 65%;" foi removida daqui */
-    }
-
-    #home .hero-txt {
-        padding-right: 24px;
-    }
-}
-
 
 /*===============================================
   5. SEÇÃO ÁREAS (#areas)
@@ -346,6 +311,7 @@ nav .menu-btn button {
 .card-grid {
     display: grid;
     gap: 32px;
+    /* Por padrão (mobile) é 1 coluna */
 }
 
 .card {
@@ -376,18 +342,6 @@ nav .menu-btn button {
     font-size: 0.875rem;
 }
 
-/* Media Query: Desktop (md: e lg:) */
-@media (min-width: 768px) {
-    .card-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-
-@media (min-width: 1024px) {
-    .card-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
-}
 
 /*===============================================
   6. SEÇÃO SOBRE (#sobre) - (MODIFICADA)
@@ -405,20 +359,8 @@ nav .menu-btn button {
     display: grid;
     gap: 64px;
     align-items: center;
+    /* Por padrão (mobile) é 1 coluna */
 }
-
-/* ESTILOS ANTIGOS (REMOVIDOS):
-.sobre-img {
-  border-radius: 8px;
-  overflow: hidden;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-}
-.sobre-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-} 
-*/
 
 /* NOVOS ESTILOS PARA OS CARTÕES */
 .sobre-card {
@@ -454,19 +396,6 @@ nav .menu-btn button {
 }
 
 
-/* Media Query: Desktop (md:) */
-@media (min-width: 768px) {
-    .sobre-grid {
-        /* Antes era "1fr 1fr"
-      Agora é "1.5fr 1fr 1fr" (Texto | Card 1 | Card 2)
-    */
-        grid-template-columns: 1.5fr 1fr 1fr;
-        gap: 32px;
-        /* Reduzindo o gap para caber melhor */
-    }
-}
-
-
 /*===============================================
   7. SEÇÃO PROCESSO (#processo)
 ===============================================*/
@@ -484,6 +413,7 @@ nav .menu-btn button {
     display: grid;
     gap: 48px;
     position: relative;
+    /* Por padrão (mobile) é 1 coluna */
 }
 
 .etapa {
@@ -511,23 +441,7 @@ nav .menu-btn button {
     margin-bottom: 16px;
 }
 
-/* Linhas de conexão */
-@media (min-width: 768px) {
-    .etapa-grid {
-        grid-template-columns: repeat(3, 1fr);
-        gap: 16px;
-    }
-
-    .etapa:not(:last-child)::after {
-        content: '';
-        position: absolute;
-        top: 40px;
-        right: -25%;
-        width: 50%;
-        border-bottom: 2px dashed #FBCB61;
-        z-index: -1;
-    }
-}
+/* As linhas de conexão só aparecerão no @media query */
 
 
 /*===============================================
@@ -661,6 +575,7 @@ footer {
 .rodape-grid {
     display: grid;
     gap: 40px;
+    /* Por padrão (mobile) é 1 coluna */
 }
 
 footer h3 {
@@ -718,13 +633,6 @@ footer .link-rodape:hover {
 
 .base a:hover {
     color: #ffffff;
-}
-
-/* Media Query: Desktop (md:) */
-@media (min-width: 768px) {
-    .rodape-grid {
-        grid-template-columns: repeat(3, 1fr);
-    }
 }
 
 
@@ -790,4 +698,92 @@ footer .link-rodape:hover {
 
 .atraso-700 {
     transition-delay: 700ms;
+}
+
+
+/*===============================================
+  12. LAYOUT RESPONSIVO (Media Queries)
+===============================================*/
+/* ESTRATÉGIA: Mobile-First
+  O layout padrão (sem media queries) é para celulares (< 768px).
+  Abaixo, adicionamos os layouts para telas maiores (Tablet e Desktop).
+*/
+
+/* == Layout para TABLET (Telas a partir de 768px) == */
+@media (min-width: 768px) {
+
+    /* 3. CABEÇALHO E NAVEGAÇÃO */
+    nav .menu-desk {
+        display: flex;
+        /* Mostra o menu desktop */
+    }
+
+    nav .menu-btn {
+        display: none;
+        /* Esconde o menu "hambúrguer" */
+    }
+
+    /* 4. SEÇÃO HERO (#home) */
+    #home .hero-grid {
+        /* Texto (1.5) e Imagem (1) */
+        grid-template-columns: 1.5fr 1fr;
+    }
+
+    #home .hero-img-box {
+        position: relative;
+        /* Volta ao fluxo */
+        opacity: 1;
+        background: none;
+    }
+
+    #home .hero-txt {
+        padding-right: 24px;
+    }
+
+    /* 5. SEÇÃO ÁREAS (#areas) */
+    .card-grid {
+        grid-template-columns: repeat(2, 1fr);
+        /* 2 colunas */
+    }
+
+    /* 6. SEÇÃO SOBRE (#sobre) */
+    .sobre-grid {
+        /* Texto (1.5) | Card 1 (1) | Card 2 (1) */
+        grid-template-columns: 1.5fr 1fr 1fr;
+        gap: 32px;
+    }
+
+    /* 7. SEÇÃO PROCESSO (#processo) */
+    .etapa-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 colunas */
+        gap: 16px;
+    }
+
+    /* Linhas de conexão (só aparecem no tablet/desktop) */
+    .etapa:not(:last-child)::after {
+        content: '';
+        position: absolute;
+        top: 40px;
+        right: -25%;
+        width: 50%;
+        border-bottom: 2px dashed #FBCB61;
+        z-index: -1;
+    }
+
+    /* 10. RODAPÉ (footer) */
+    .rodape-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 colunas */
+    }
+}
+
+/* == Layout para DESKTOP (Telas a partir de 1024px) == */
+@media (min-width: 1024px) {
+
+    /* 5. SEÇÃO ÁREAS (#areas) */
+    .card-grid {
+        grid-template-columns: repeat(3, 1fr);
+        /* 3 colunas */
+    }
 }
