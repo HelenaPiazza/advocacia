@@ -105,7 +105,7 @@ section .subtitulo {
     box-shadow: 0 4px 14px rgba(251, 203, 97, 0.4);
     transition: all 0.3s ease;
 }
-
+/*hover = passar o mouse*/
 .botao-acao:hover {
     background-color: #EAAF3A;
     color: #2C4A7A;
@@ -136,6 +136,7 @@ section .subtitulo {
   3. CABEÇALHO E NAVEGAÇÃO
 ===============================================*/
 header {
+  /*sticky mantem o cabeçalho mesmo "rolando" o site*/
     position: sticky;
     top: 0;
     z-index: 50;
@@ -194,7 +195,7 @@ nav .menu-desk a {
 nav .menu-desk a:hover {
     color: #FBCB61;
 }
-
+/*haburger*/
 nav .menu-btn {
     display: block; /* Visível no mobile (padrão) */
 }
@@ -211,7 +212,7 @@ nav .menu-btn button {
 
 
 /*===============================================
-  4. SEÇÃO HERO (#home)
+  4. SEÇÃO HERO banner (#home)
 ===============================================*/
 #home {
     position: relative;
@@ -310,7 +311,7 @@ nav .menu-btn button {
 
 .card-grid {
     display: grid;
-    gap: 32px;
+    gap: 32px; /* espaço*/
     /* Por padrão (mobile) é 1 coluna */
 }
 
@@ -373,7 +374,7 @@ nav .menu-btn button {
     text-align: center;
     transition: all 0.3s ease;
     overflow: hidden;
-    /* Importante para a imagem */
+    /* esconde a sobra da imagem se ela quebrar */
 }
 
 .sobre-card:hover {
@@ -386,6 +387,7 @@ nav .menu-btn button {
     height: 300px;
     /* Altura fixa para os cards */
     object-fit: cover;
+
 }
 
 .sobre-card p {
@@ -462,7 +464,7 @@ nav .menu-btn button {
     gap: 32px;
 }
 
-.depo {
+.depo { /* depoimento*/
     background-color: rgba(220, 234, 251, 0.6);
     padding: 32px;
     border-radius: 8px;
@@ -476,7 +478,7 @@ nav .menu-btn button {
     margin: 0;
 }
 
-.depo span {
+.depo span { /*nome do povo*/
     font-weight: 700;
     display: block;
     margin-top: 16px;
@@ -527,7 +529,7 @@ form textarea {
 }
 
 form input[type="text"]:focus,
-form input[type="email"]:focus,
+form input[type="email"]:focus,/* focus = selecionado*/
 form textarea:focus {
     border-color: #FBCB61;
     box-shadow: 0 0 0 1px #FBCB61;
@@ -542,14 +544,14 @@ form .form-check {
     align-items: flex-start;
 }
 
-form .form-check input {
+form .form-check input { /*input = entrada*/
     height: 16px;
     width: 16px;
     margin-top: 4px;
     accent-color: #FBCB61;
 }
 
-form .form-check label {
+form .form-check label { /*label = escrita*/
     margin-left: 12px;
     font-size: 0.875rem;
     color: #2C4A7A;
