@@ -174,7 +174,7 @@ nav .logo-img {
 
 nav .logo-img:hover {
     opacity: 0.8;
-    /* Escurece um pouco ao passar o mouse */
+    /* Esclarece um pouco ao passar o mouse */
 }
 
 nav .menu-desk {
@@ -344,7 +344,7 @@ nav .menu-btn button {
 
 
 /*===============================================
-  6. SEÇÃO SOBRE (#sobre) - (MODIFICADA)
+  6. SEÇÃO SOBRE (#sobre)
 ===============================================*/
 #sobre {
     padding-top: 96px;
